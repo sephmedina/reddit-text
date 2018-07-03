@@ -12,11 +12,7 @@ def get_reddit_object() -> 'reddit object':
 
 def get_top_post() -> 'url, title, and body of top post':
 	reddit = get_reddit_object()
-	hot = reddit.subreddit('UCI').hot()
-	sub = None
-	for s in hot:
-		sub = s
-		break
+	sub = reddit.subreddit('UCI').hot().next() # first post in list of hot posts
 	return sub.url + '\n' + sub.title + '\n' + sub.selftext
 
 # testing:
