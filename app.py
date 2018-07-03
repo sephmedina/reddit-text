@@ -4,10 +4,7 @@ import tweepy
 
 #jinja section
 #twitter section
-consumer_token = 'MD8piMcr4DAdmeEwE05hwtVpg'
-consumer_secret = 'rUiYD5ZSL5sdLEFsgK4sCUZAN87HCi4UrPXO4tyFInnaSCX88b'
-access_token = '730940035067830272-uWFQ9Ri5P3JgevTBa1lYbsKazwsl3L8'
-access_token_secret = 'DsvM1VdWtPuk55QzGNiNLFDpyWhuMyAojXu7oqNt6Kf6Z'
+
 
 auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
