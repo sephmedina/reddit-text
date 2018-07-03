@@ -1,0 +1,38 @@
+notes
+
+
+<signing in and out of google>
+<uses jinja, and google app engine users>
+#from google.appengine.api import users
+
+if user:
+    email = user.email()
+    logout_url = users.CreateLogoutURL('/')
+    template1 = jinja_environment.get_template('sign-out.html')
+    template_values = {'email':email, 'logout_url':logout_url}
+    self.response.out.write(template.render() + template1.render(template_values))
+else:
+    login_url = users.CreateLoginURL('/')
+    template1 = jinja_environment.get_template('sign-in.html')
+    template_values = {'login_url':login_url}
+    self.response.out.write(template.render() + template1.render(template_values))
+
+TO RUN PROJECTS -
+export FLASK_RUN=main.py
+flask run
+
+I don't know what's up with gcloud but ill fix that later
+
+Flask:
+http://flask.pocoo.org/docs/1.0/quickstart/
+
+Jinja/ HTML templates:
+http://jinja.pocoo.org/docs/2.10/templates/
+
+Twitter:
+https://apps.twitter.com/app/15221185/keys
+for tweepy
+http://tweepy.readthedocs.io/en/v3.6.0/getting_started.html
+for iteration, use Cursor object
+
+https://stackoverflow.com/questions/33189885/get-all-tweets-call-python-tweepy-cursorapi-search-without-a-q-parameter

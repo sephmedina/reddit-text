@@ -1,0 +1,140 @@
+{% extends 'index.html' %}
+
+
+
+{% block script %}
+<script type='text/javascript'>
+    //Initializing Google maps
+    function initMap() {
+        var location = {lat: 37.8719, lng: -122.2585};   //uc berkeley
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 15
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        //https://dev.socrata.com/blog/2014/05/31/google-maps.html
+    }
+
+    var key = '9ejJ2UCztBK8AVUeyRKeQ03sx';
+    var RSTRNT_URL = 'https://data.cityofberkeley.info/resource/rtpz-sb4c.json'
+    var limit = 3;
+    //grabbing sample data from Socrata
+    /* TO TEST OUT RESTAURANT SEARCH
+    $.ajax({
+        url: RSTRNT_URL,
+        type: "GET",
+        data: {
+          "$limit" : limit,
+          "$$app_token" : key
+        }
+    }).done(function(data) {
+      alert("Retrieved " + data.length + " records from the dataset!");
+      for (var i = 0; i < data.length; i++) {
+          alert(data[i].doing_business_as);
+      }
+    });
+    */
+
+    $(document).ready(setup);
+    function setup() {
+      $('#searchButton').click(search);
+    }
+    //grab data
+    function search(){
+      var query = $("#searchField").val();
+      query = query.split(' ').join('%20');
+      var queryUrl = RSTRNT_URL + "?doing_business_as=" + query;
+      $.getJSON(queryUrl, displayResults);
+    }
+
+    $(document).keypress(function search(e) {
+        if(e.which == 13) { //event code 13 is for ENTER
+            search();
+        }
+    });
+    //
+    function displayResults(json){
+        var results = $('#results');
+        if (!json) {
+            alert('Unsuccessful');
+            return 0;
+        }
+      //initialize var to have html, which will have info appended to later
+      restaurants.html('');
+
+      for (var i = 0; i < json.length; i++){
+        var item = json[i];
+        console.log(item);
+        var name = item.doing_business_as;
+        var address = item.restaurant_address_address;
+        restaurants.append(
+        $('<section class="items"><div class=""><h2>' +  name + '</h2></a><h3>' +  address + '</h3></div></section>'));
+      }
+    }
+
+</script>
+<style>
+    #map {
+        height:60%;
+        width:60%;
+        margin:auto;
+        margin-left:500px;
+    }
+    #restaurants {
+        width:400px;
+        float:left;
+    }
+    #results {
+        float:left;
+        width: 400px;
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+    <h1> You've reached the maps page </h1>
+    <div id='restaurants'>
+        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <input type="text" id="searchField" placeholder="Search Restaurants in Berkeley">
+        <button id="searchButton">Search</button>
+    </div>
+    <div id='results'>
+
+    </div>
+    <div id='map'></div>
+
+
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa40ARNSWkg4KEaprpGHk4HtJbvIt2tco&callback=initMap"
+    async defer></script>
+{% endblock %}
+
+<!--
+/*
+ w3alcd text W3ALCD
+ doing_business_as text Doing_Business_As
+ restaurant_address_city text Restaurant_Address (city)
+ restaurant_address_state text Restaurant_Address (state)
+ restaurant_address point Restaurant_Address
+ inspection_date floating_timestamp Inspection_Date
+ major_violation_improper_holding_temperature number Major_Violation_Improper_Holding_Temperature
+ minor_violation_improper_holding_temperature number Minor_Violation_Improper_Holding_Temperature
+ major_violation_inadequate_cooking number Major_Violation_Inadequate_Cooking
+ minor_violation_inadequate_cooking number Minor_Violation_Inadequate_Cooking
+ major_violation_personal_hygiene number Major_Violation_Personal_Hygiene
+ minor_violation_personal_hygiene number Minor_Violation_Personal_Hygiene
+ major_violation_contaminated_equipment number Major_Violation_Contaminated_Equipment
+ minor_violation_contaminated_equipment number Minor_Violation_Contaminated_Equipment
+ major_violation_unsafe_food_source number Major_Violation_Unsafe_Food_Source
+ minor_violation_unsafe_food_source number Minor_Violation_Unsafe_Food_Source
+ indbdate floating_timestamp InDbDate
+ */
+// restaurant_address_zip text Restaurant_Address (zip)
+-->
