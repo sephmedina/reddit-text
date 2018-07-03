@@ -20,4 +20,6 @@ def get_top_post() -> 'url, title, and body of top post':
 	return sub.url + '\n' + sub.title + '\n' + sub.selftext
 
 # testing:
-print(get_top_post())
+debug = False
+if debug:
+	print(get_top_post())

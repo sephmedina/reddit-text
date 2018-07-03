@@ -6,9 +6,12 @@ import reddit
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
-	top_post = reddit.get_top_post();
-	twilio_sms.send_message(top_post);
-    return render_template('index.html', request=request.method)
+	"""Landing Page"""
+	send = False
+	if send:
+		top_post = reddit.get_top_post()
+		twilio_sms.send_message(top_post)
+	return render_template('index.html', request=request.method)
 
 #running server/application
 if __name__ == '__main__':
@@ -18,4 +21,4 @@ if __name__ == '__main__':
 	2)Grab top post from subreddit (UCI) - Reddit
 	3)Send Message through twilio using the post as an argument - twilio + reddit
 	'''
-    app.run(debug=True)
+	app.run(debug=True)
