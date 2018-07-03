@@ -1,12 +1,14 @@
 from flask import Flask, request, render_template
 import twilio_sms
+import get_top_post
 
 
 #routing
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
-
+	top_post = get_top_post();
+	send_message(top_post);
     return render_template('index.html', request=request.method)
 
 #running server/application
