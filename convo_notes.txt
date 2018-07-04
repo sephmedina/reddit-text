@@ -1,6 +1,6 @@
 Potential conversation:
 
-Note: forgot to include this, but at the end of the every message the bot says, the bot should say
+Note: forgot to include this, but at the end of the every message, the bot should say
 something like, "text 'bye' to end this conversation" and the upon the user saying that, the bot says,
 "Thank you, have a nice day" or something.
 
