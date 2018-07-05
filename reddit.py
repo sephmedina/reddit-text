@@ -57,4 +57,4 @@ def get_post_info(sub_name: str, number_of_posts: int, start_point: int,  catego
 # testing:
 debug = False
 if debug:
-	print(get_post_info('UCI',2,2,'hot'))
+	print(get_post_info('smashbros',1,2,'hot'))
