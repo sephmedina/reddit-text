@@ -10,7 +10,7 @@ def index():
 	"""Landing Page"""
 	send = False
 	if send:
-		top_post = reddit.get_top_post()
+		top_post = reddit.get_post_info('UCI',1,1,'hot') # look at reddit.py
 		twilio_sms.send_message(top_post)
 	return render_template('index.html', request=request.method)
 
