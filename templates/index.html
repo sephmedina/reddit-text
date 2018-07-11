@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Joseph Medina's life, lol</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for("static", filename="styles.css")}}" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    {% block script %} {% endblock %}
+
+
+
+
+    <script>
+    var prev = window.pageYOffset;
+    window.onscroll = function() {
+        var curr = window.pageYOffset;
+
+        if (prev > curr) {
+            document.getElementById('header').style.top = '0';
+        }
+        else {
+            document.getElementById('header').style.top = '-75px';
+        }
+        prev = curr;
+    }
+    </script>
+
+
+
+  </head>
+  <body>
+    <div id="header">
+        <h1>WELCOME TO ME SWAMP </h1>
+        <ul id='navbar'>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/about'>About</a></li>
+            <li><a href='/maps'>Maps</a></li>
+            <li><a href='/twitter'>Twitter</a></li>
+
+        </ul>
+    </div>
+
+    <div id='content'>
+    {% block content %}{% endblock %}
+    </div>
+
+
+
+    <p>Current request: {{request}}</p>
+
+    <div id='footer'>
+        Footer
+    </div>
+  </body>
+</html>
+<!-- https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python-->

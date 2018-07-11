@@ -1,0 +1,64 @@
+Potential conversation:
+
+Note: forgot to include this, but at the end of the every message, the bot should say
+something like, "text 'bye' to end this conversation" and the upon the user saying that, the bot says,
+"Thank you, have a nice day" or something.
+
+------------------------------------------------------------------------------------------------------
+- bot waits for a text from user
+
+- bot receives a response
+
+- bot says:
+	Hello, what subreddit would like to search in today?
+		- text "random" if you would like a random subreddit
+
+- user says "UCI"
+
+- bot says:
+	Accessing UCI subreddit...
+	From here, you can view posts, but what type of posts would you like to view, and how many?
+	 - text "{number of posts} hot" to get a desired number of hot posts
+	 - text "{number of posts} new" to get a desired number of new posts
+	 - text "{number of posts} rising" to get a desired number of rising posts
+	 - text "{number of posts} controversial" to get a desired number of controversial posts
+	 - text "{number of posts} top" to get a desired number of top posts
+	 - text "{number of posts} glided" to get a desired number of glided posts
+
+- user says "2 hot"
+
+- bot says:
+	Here is the first post listed in the hot category on the UCI subreddit:
+	{link of post}
+	{title of post}
+	{body of post}
+
+	Here is the second post:
+	{link of post}
+	{title of post}
+	{body of post}
+
+	Would you like to do anything else?
+		- text "move" to go to another subreddit
+		- text "continue hot" to read more posts from this category
+		- text "move category" to go to another category on this subreddit
+
+if user says "move" here, 
+	* bot returns to line 8, saying the same thing, without the "hello" at the beginning *
+
+if user says "continue hot" here,
+	- bot says:
+		How many posts would you like to see now?
+			text me a number please
+
+	- user says "2"
+
+	- bot says:
+		Here is the third post listed in the hot category on the UCI subreddit:
+		etc etc...
+
+		* bot returns to line 36 *
+
+if user says "move category" here,
+	* bot returns to line 14 *
+
