@@ -1,4 +1,4 @@
-#!/Users/joseph/CS/Projects/reddit text/venv/bin/python
+#!/Users/jtavasso/Documents/UCI/Projects/reddit_text/reddit-text/venv/bin/python
 
 import sys
 import getopt

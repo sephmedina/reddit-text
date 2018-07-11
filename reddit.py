@@ -1,18 +1,5 @@
 import praw
-
-def get_reddit_object() -> 'reddit object':
-	''' Returns a Reddit object using info from the
-		JoshSearchBot account
-	'''
-	client = 'NkTmzbz9_Akg5w'
-	secret = 'vAeI7tarAe2MQdhUYZZI4NCkWls'
-	bot_name = 'JoshSearchBot'
-	bot_password = 'JoshSearchBot'
-	agent = 'created by JoshTavasso and SephMedina'
-
-	reddit_obj = praw.Reddit(client_id = client, client_secret = secret, username = bot_name, 
-							password = bot_password, user_agent = agent)
-	return reddit_obj
+from reddit_config import reddit_obj
 
 def get_post_info(sub_name: str, number_of_posts: int, start_point: int,  category: str) -> str:
 	'''
@@ -25,7 +12,6 @@ def get_post_info(sub_name: str, number_of_posts: int, start_point: int,  catego
 	'''
 
 	# get a list of posts from a desired subreddit and category:
-	reddit_obj = get_reddit_object()
 	sub_list = eval("reddit_obj.subreddit('{}').{}()".format(sub_name,category))
 
 	# sets the sub_list to the position desired

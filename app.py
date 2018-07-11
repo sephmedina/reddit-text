@@ -17,9 +17,9 @@ def index():
 
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_ahoy_reply():
-    """Respond to incoming messages with a friendly SMS."""
-    # Start our response
-    twilio_sms.send_message("Git out me swamp")
+	"""Respond to incoming messages with a friendly SMS."""
+	# Start our response
+	twilio_sms.send_message("Git out me swamp")
 	return render_template('index.html')
 
 #running server/application
