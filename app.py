@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 import twilio_sms
 import reddit
+from twilio.twiml.messaging_response import Message, MessagingResponse
 
 #routing
 app = Flask(__name__)
@@ -18,8 +19,8 @@ def index():
 def sms_ahoy_reply():
     """Respond to incoming messages with a friendly SMS."""
     # Start our response
-	
-    return twilio_sms.send_message("Git out me swamp")
+    twilio_sms.send_message("Git out me swamp")
+	return render_template('index.html')
 
 #running server/application
 if __name__ == '__main__':
