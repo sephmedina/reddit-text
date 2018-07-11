@@ -2,9 +2,9 @@ import twilio_sms
 import reddit
 
 def main():
-	send = False
+	send = True
 	if send:
-		top_post = reddit.get_top_post();
+		top_post = reddit.get_post_info('smashbros',1,2,'hot');
 		twilio_sms.send_message(top_post);
 
 #running server/application
