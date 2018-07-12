@@ -1,5 +1,5 @@
 from twilio.rest import Client
-
+from twilio import twiml
 # Account Sid and Auth Token located @ twilio.com/console
 
 
@@ -14,7 +14,6 @@ message_from = '+15103450626 ' # phone nunber from my Twilio account
 message_to = '+15109782799' # my phone number, linked with my Twilio account
 
 
-
 '''
 #Josh's:
 
@@ -27,4 +26,3 @@ message_from = '+14153606487' # phone nunber from my Twilio account
 message_to = '+15102609647' # my phone number, linked with my Twilio account
 
 '''
-

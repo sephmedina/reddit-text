@@ -1,4 +1,5 @@
 from twilio_config import twilio_client, message_to, message_from
+from twilio.twiml.messaging_response import MessagingResponse
 
 def send_message(message_body : str) -> None:
 	# sends the message
@@ -14,3 +15,11 @@ def print_message():
 	messages = twilio_client.messages.list()
 	for i in range(5):
 		print(messages[i].body)
+
+def get_messages():
+	return twilio_client.messages.list()
+
+def response(message):
+	response = MessagingResponse()
+	response.message(message)
+	return str(response)
