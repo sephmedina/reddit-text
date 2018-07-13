@@ -1,0 +1,28 @@
+Commit July 13, 2018
+
+- put the modules into their own directory
+
+- added comments and organized the functions
+
+- bot can receive any message now and will always return something back. 
+
+- added a new module, checker.py, used for parsing and checking the user's
+  message to ensure it is in the correct format.
+
+- bot expects messages to be in the format: subreddit space # of posts space category
+  - take a look in modules/checker.py for more details
+  - try just texting like, "hello" or "nice" (assuming those subreddits don't exist) and see what happens
+
+- the user can still text just a subreddit and get a top post, like how it was originally
+
+- allows messages to be sent that exceed 1600 characters. Make sure you set the twilio config
+  info to yours though, before trying a >1600 message request. Right now it is set to mine.
+
+- decided to just ignore the whole "starting point" idea (remembering where the user was at if
+  they request to see more posts). Maybe one day we can get back to it. Still left the code in the
+  reddit function that deals with starting points, in case we ever end up using it. 
+  lmk what you think though.
+
+- I guess we're done, just need to buy a twilio account I suppose, lmk if we need to do anything else
+
+- n i c e
