@@ -7,19 +7,15 @@ def send_message(message_body : str) -> None:
 	                              body = message_body,
 	                              from_ = message_from,
 	                              to = message_to)
-
 def print_message():
-	# printing messages
-
 	# prints last 5 messages, for testing
 	messages = twilio_client.messages.list()
 	for i in range(5):
 		print(messages[i].body)
 
-def get_messages():
-	return twilio_client.messages.list()
-
-def response(message):
+def send_twiml_response(message):
+	"""	Returns a Twiml Response back to Twilio to send to Phone Number """
 	response = MessagingResponse()
 	response.message(message)
+	#IF MESSAGE > 1600, BREAK DOWN INTO MORE POSTS. SEND FIRST AS TWIML, USE SEND_MESSAGE FOR REST
 	return str(response)
