@@ -1,4 +1,3 @@
 # reddit-text
-A bot that messages only the hottest and top-tier post on the one and only UCI Subreddit
-
+Text our number with a subreddit you want to browse and recieve the top posts
 Pogchamp - Joseph
