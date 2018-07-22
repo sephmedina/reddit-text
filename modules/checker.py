@@ -25,8 +25,7 @@ def check_for_int(*args) -> bool:
 	""" checks if the args given are positive ints """
 	try:
 		for arg in args:
-			arg = int(arg)
-			if arg < 1:
+			if int(arg) < 1:
 				return False
 
 	except ValueError:
@@ -68,7 +67,7 @@ def parse_message(user_message: str) -> ['subreddit', 'number', 'category']:
 		by default, so we return an invalid list
 	"""
 	if len(user_message) > 3:
-		return ['sorry', 'bad', 'message']
+		return ['Invalid Subreddit', 'Invalid Number', 'Invalid Category']
 
 	# if the length is <= 3:
 
