@@ -16,7 +16,7 @@ requests==2.19.1
 six==1.11.0
 twilio==6.14.7
 update-checker==0.16
-urllib3==1.23
+urllib3==1.26.5
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
 Werkzeug==0.14.1
